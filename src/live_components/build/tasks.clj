@@ -20,15 +20,20 @@
 (boot/task-options!
  built-in/pom {:project 'live-components :version +version+})
 
+(def push-release bl/push-release)
+(def push-snapshot bl/push-snapshot)
+
 (boot/deftask build
   "Build my project."
   []
   (comp (boot-cljs/cljs)
-        (bl/build-jar)
-        #_(built-in/target)
-        #_(built-in/pom)
-        #_(built-in/jar)
-        #_(built-in/install)))
+        (bl/build-jar)))
+
+(boot/deftask release
+  "Build my project."
+  []
+  (comp (build)
+        (bl/push-release)))
 
 (boot/deftask dev
   "Build and run app with reloading and repl"

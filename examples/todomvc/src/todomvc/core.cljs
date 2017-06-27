@@ -1,5 +1,8 @@
 (ns todomvc.core
-  (:require [reagent.core :as r]))
+  (:require [reagent.core :as r]
+            [cljs.reader :as edn]
+            [live-components.client.components :as lc]
+            [live-components.client.core :as live]))
 
 (defonce todos (r/atom (sorted-map)))
 
@@ -59,9 +62,10 @@
        [:button#clear-completed {:on-click clear-done}
         "Clear completed " done])]))
 
-(defn todo-item []
+(defn todo-item [todo]
   (let [editing (r/atom false)]
-    (fn [{:keys [id done title]}]
+    (fn [{:keys [id done title] :as todo}]
+      (js/console.log (pr-str todo))
       [:li {:class (str (if done "completed ")
                         (if @editing "editing"))}
        [:div.view
@@ -74,10 +78,10 @@
                      :on-save #(save id %)
                      :on-stop #(reset! editing false)}])])))
 
-(defn todo-app [props]
-  (let [filt (r/atom :all)]
-    (fn []
-      (let [items (vals @todos)
+(defonce filt (r/atom :all))
+
+(defn todo-app [live-todos]
+      (let [items (vals live-todos)
             done (->> items (filter :done) count)
             active (- (count items) done)]
         [:div
@@ -102,8 +106,19 @@
              [:footer#footer
               [todo-stats {:active active :done done :filt filt}]]])]
          [:footer#info
-          [:p "Double-click to edit a todo"]]]))))
+          [:p "Double-click to edit a todo"]]]))
+
+(defn empty-div []
+  [:div])
+
+(defn live-todo-app []
+  [lc/live-component ["/todos"] todo-app empty-div empty-div])
 
 (defn ^:export run []
-  (r/render [todo-app]
+  (r/render [live-todo-app]
             (js/document.getElementById "app")))
+
+(defn transform-response [[uri {:keys [status body] :as response}]]
+  [uri (update response :body edn/read-string)])
+
+(live/enable! (str "ws://" js/document.location.host "/live") transform-response)

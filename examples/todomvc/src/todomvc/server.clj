@@ -8,6 +8,7 @@
    [ring.middleware.params :as p]
    [ring.middleware.keyword-params :as kp]
    [immutant.web :as immutant]
+   [live-components.server.core :as live]
    ))
 
 (defonce todos (atom (sorted-map)))
@@ -28,6 +29,7 @@
 
 (defn api-call [f & args]
   (let [result (apply f args)]
+    (live/mark-updated "/todos")
     (pr-str result)))
 
 (c/defroutes app-routes
@@ -46,6 +48,7 @@
       (rm-resource/wrap-resource ".")
       (kp/wrap-keyword-params)
       (p/wrap-params)
+      (live/wrap-live "/live")
       ))
 
 (defonce server (atom nil))

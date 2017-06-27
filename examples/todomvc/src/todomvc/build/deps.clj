@@ -27,6 +27,7 @@
      [ring "1.6.1"]
      [compojure "1.5.1"]
      [org.immutant/web "2.1.2"]
+     [live-components "1.0.0"]
 
      ]})
 

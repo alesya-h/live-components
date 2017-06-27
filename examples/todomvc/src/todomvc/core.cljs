@@ -1,6 +1,7 @@
 (ns todomvc.core
   (:require [reagent.core :as r]
             [cljs.reader :as edn]
+            [ajax.core :as ajax]
             [live-components.client.components :as lc]
             [live-components.client.core :as live]))
 
@@ -8,19 +9,16 @@
 
 (defonce counter (r/atom 0))
 
-(defn add-todo [text]
-  (let [id (swap! counter inc)]
-    (swap! todos assoc id {:id id :title text :done false})))
+(defn add-todo [text] (ajax/POST "/todos/new" {:format :raw :params {:title text}}))
 
-(defn toggle [id] (swap! todos update-in [id :done] not))
-(defn save [id title] (swap! todos assoc-in [id :title] title))
-(defn delete [id] (swap! todos dissoc id))
+(defn toggle [id] (ajax/POST (str "/todos/" id "/toggle")))
+(defn save [id title] (ajax/PUT (str "/todos/" id) {:format :raw :params {:title title}}))
+(defn delete [id] (ajax/DELETE (str "/todos/" id)))
 
-(defn mmap [m f a] (->> m (f a) (into (empty m))))
-(defn complete-all [v] (swap! todos mmap map #(assoc-in % [1 :done] v)))
-(defn clear-done [] (swap! todos mmap remove #(get-in % [1 :done])))
+(defn complete-all [v] (ajax/POST (str "/todos/complete-all") {:format :raw :params {:v (str v)}}))
+(defn clear-done [] (ajax/POST (str "/todos/clear-done")))
 
-(defonce init (do
+#_(defonce init (do
                 (add-todo "Rename Cloact to Reagent")
                 (add-todo "Add undo demo")
                 (add-todo "Make all rendering async")

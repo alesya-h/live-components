@@ -28,6 +28,7 @@
      [compojure "1.5.1"]
      [org.immutant/web "2.1.2"]
      [live-components "1.0.0"]
+     [cljs-ajax "0.6.0"]
 
      ]})
 

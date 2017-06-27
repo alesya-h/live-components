@@ -1,2 +1,0 @@
-{:require  [live-components.example.client.client]
- :init-fns [live-components.example.client.client/init]}

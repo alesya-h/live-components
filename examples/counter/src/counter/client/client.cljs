@@ -1,9 +1,9 @@
-(ns live-components.example.client.client
+(ns counter.client.client
   (:require
-    [reagent.core :as r]
-    [ajax.core :as ajax]
-    [live-components.example.common.routes :as routes]
-    [live-components.example.client.live :as live]))
+   [reagent.core :as r]
+   [ajax.core :as ajax]
+   [counter.common.routes :as routes]
+   [counter.client.live :as live]))
 
 (defn make-ajax-handler [on-success on-fail]
   (fn [[ok response]]

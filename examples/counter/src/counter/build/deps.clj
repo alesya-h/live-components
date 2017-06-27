@@ -1,4 +1,4 @@
-(ns live-components.build.deps
+(ns counter.build.deps
   (:require [boot.core :as boot]))
 
 (println "Defining deps.")
@@ -19,14 +19,18 @@
      [adzerk/boot-cljs "1.7.228-1"]
      [adzerk/boot-cljs-repl "0.3.0"]
      [adzerk/boot-reload "0.4.8"]
-     [adzerk/bootlaces "0.1.13"]
      ]
 
    :app
    '[[reagent "0.6.0-alpha"] ;; ui
-     [datascript "0.15.0"] ;; for storing subscriptions
+     [live-components "1.0.0"]
      [org.clojure/data.json "0.2.6"]
+     [ring "1.6.1"]
+     [bidi "2.0.13"] ;; routing
+     [com.cemerick/url "0.1.1"] ;; routes: map->query, query->map
+     [cljs-ajax "0.5.1"] ;; client->server api calls
      [org.immutant/web "2.1.2"]
+
      ]})
 
 (defn request-dependencies [category]

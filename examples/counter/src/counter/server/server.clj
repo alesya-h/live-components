@@ -1,8 +1,8 @@
-(ns live-components.example.server.server
+(ns counter.server.server
   (:require
    [bidi.ring :as bidi-ring]
-   [live-components.example.common.routes :as routes]
-   [live-components.example.server.handlers :as handlers]
+   [counter.common.routes :as routes]
+   [counter.server.handlers :as handlers]
    [live-components.server.core :as live]
 
    [ring.middleware.resource :as rm-resource]

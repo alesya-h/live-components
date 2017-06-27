@@ -1,6 +1,6 @@
-(ns live-components.example.client.live
+(ns counter.client.live
   (:require
-   [live-components.example.common.routes :as routes]
+   [counter.common.routes :as routes]
    [reagent.core :as r]
    [live-components.client.subscriptions :as sub]
    [live-components.client.components :as components]

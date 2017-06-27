@@ -1,0 +1,2 @@
+{:require  [counter.client.client]
+ :init-fns [counter.client.client/init]}

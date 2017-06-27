@@ -1,4 +1,4 @@
-(ns live-components.example.common.routes
+(ns counter.common.routes
   (:require
    [bidi.bidi :as bidi]
    [clojure.string :as str]

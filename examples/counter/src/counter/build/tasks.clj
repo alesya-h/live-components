@@ -1,40 +1,44 @@
-(ns live-components.build.tasks
+(ns counter.build.tasks
   (:require
    [boot.core :as boot]
    [boot.task.built-in :as built-in]
 
-   [live-components.build.deps :as deps] ;; automatically requests build deps
+   [counter.build.deps :as deps] ;; automatically requests build deps
 
    [adzerk.boot-cljs :as boot-cljs]
    [adzerk.boot-cljs-repl :as boot-cljs-repl]
-   [adzerk.boot-reload :as boot-cljs-reload]
-
-   [adzerk.bootlaces :as bl]))
+   [adzerk.boot-reload :as boot-cljs-reload]))
 
 (deps/request-dependencies :app)
 (println "Configuring build tasks.")
 
-(def +version+ "1.0.0")
-(bl/bootlaces! +version+)
-
 (boot/task-options!
- built-in/pom {:project 'live-components :version +version+})
+ built-in/pom {:project 'live-components-example-counter
+               :version "1.0.1-SNAPSHOT"})
 
 (boot/deftask build
   "Build my project."
   []
-  (comp (boot-cljs/cljs)
-        (bl/build-jar)
-        #_(built-in/target)
-        #_(built-in/pom)
-        #_(built-in/jar)
-        #_(built-in/install)))
+  (comp ;(boot-cljs/cljs)
+        (built-in/target)
+        (built-in/pom)
+        (built-in/jar)
+        (built-in/install)))
+
+(boot/deftask load-app []
+  (fn [next-task]
+    (fn [fileset]
+      (println "Loading app.")
+      (require '[counter.server.server])
+      (println "Loading app complete.\n")
+      (next-task fileset))))
 
 (boot/deftask dev
   "Build and run app with reloading and repl"
   []
   (comp
    (built-in/repl :server true)
+   (load-app)
    (built-in/watch :verbose true)
    (built-in/speak)
    (boot-cljs-reload/reload) ;; should be before cljs

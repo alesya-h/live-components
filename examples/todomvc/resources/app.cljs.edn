@@ -1,2 +1,2 @@
-{:require  [todomvc.core]
- :init-fns [todomvc.core/run]}
+{:require  [app.core]
+ :init-fns [app.core/run]}

@@ -1,4 +1,4 @@
-(ns todomvc.server
+(ns app.server
   (:require
    [compojure.core :as c]
    [compojure.route :as route]

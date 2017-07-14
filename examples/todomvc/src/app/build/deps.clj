@@ -1,4 +1,4 @@
-(ns todomvc.build.deps
+(ns app.build.deps
   (:require [boot.core :as boot]))
 
 (println "Defining deps.")

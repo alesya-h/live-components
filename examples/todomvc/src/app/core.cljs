@@ -1,4 +1,4 @@
-(ns todomvc.core
+(ns app.core
   (:require [reagent.core :as r]
             [cljs.reader :as edn]
             [ajax.core :as ajax]

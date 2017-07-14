@@ -1,9 +1,9 @@
-(ns counter.client.client
+(ns app.client.client
   (:require
    [reagent.core :as r]
    [ajax.core :as ajax]
-   [counter.common.routes :as routes]
-   [counter.client.live :as live]))
+   [app.common.routes :as routes]
+   [app.client.live :as live]))
 
 (defn make-ajax-handler [on-success on-fail]
   (fn [[ok response]]

@@ -1,8 +1,8 @@
-(ns counter.server.handlers
+(ns app.server.handlers
   (:require
    [clojure.java.io :as io]
    [clojure.data.json :as json]
-   [counter.server.live :as live]))
+   [app.server.live :as live]))
 
 (defonce counter (atom 0))
 

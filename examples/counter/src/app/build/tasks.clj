@@ -1,9 +1,9 @@
-(ns counter.build.tasks
+(ns app.build.tasks
   (:require
    [boot.core :as boot]
    [boot.task.built-in :as built-in]
 
-   [counter.build.deps :as deps] ;; automatically requests build deps
+   [app.build.deps :as deps] ;; automatically requests build deps
 
    [adzerk.boot-cljs :as boot-cljs]
    [adzerk.boot-cljs-repl :as boot-cljs-repl]
@@ -29,7 +29,7 @@
   (fn [next-task]
     (fn [fileset]
       (println "Loading app.")
-      (require '[counter.server.server])
+      (require '[app.server.server])
       (println "Loading app complete.\n")
       (next-task fileset))))
 

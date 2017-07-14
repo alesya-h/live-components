@@ -5,6 +5,6 @@
           :resource-paths #{"resources"})
 
 (println "Loading tasks.")
-(require '[todomvc.build.tasks :refer :all])
+(require '[app.build.tasks :refer :all])
 
 (println "Loading tasks complete.\n")

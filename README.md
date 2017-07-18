@@ -1,10 +1,10 @@
-# Live Components
+# Live Components 🦄🦄🦄
 
 Don't duplicate server state on the client and get realtime collaboration for free.
 
 ## What is this about?
 
-You have your backend with REST API. You have your React-based frontend. Usually you use ajax calls and keep out-of-date independent incomplete copy of your server state on the client. When you make ajax calls, you update your local copy of the state. With live-components you throw away manual handling of server state on the client. You have one component that takes a list of subscription urls, and component, which will be passed data from that urls and rendered. On the server whenever you think some urls may have new data, you mark them as updated and new data is automatically pushed to all connected clients. Magic!
+You have your backend with REST API. You have your React-based frontend. Usually you use ajax calls and keep out-of-date independent incomplete copy of your server state on the client. When you make ajax calls, you update your local copy of the state. With live-components you throw away manual handling of server state on the client. You have one component that takes a list of subscription urls, and component, which will be passed data from that urls and rendered. On the server whenever you think some urls may have new data, you mark them as updated and new data is automatically pushed to all connected clients. Magic! 🦄🦄🦄
 
 ## I want to see it!
 

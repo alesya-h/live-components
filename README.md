@@ -120,6 +120,6 @@ See [examples/todomvc](./examples/todomvc) for reagent's todomvc augmented with 
 3. [72093db](https://github.com/alesguzik/live-components/commit/72093db340e47df58be9f60661e5d433f528131c) todo live modification. At this point we have fully-collaborative todomvc.
 
 
-## Thanks
+## Credits
 
 This project have been born as part of continuous effort to build the best social file sharing platform [http://ourmedian.com](http://ourmedian.com).

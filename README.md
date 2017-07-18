@@ -2,13 +2,16 @@
 
 Don't duplicate server state on the client and get realtime collaboration for free.
 
+
 ## What is this about?
 
 You have your backend with REST API. You have your React-based frontend. Usually you use ajax calls and keep out-of-date independent incomplete copy of your server state on the client. When you make ajax calls, you update your local copy of the state. With live-components you throw away manual handling of server state on the client. You have one component that takes a list of subscription urls, and component, which will be passed data from that urls and rendered. On the server whenever you think some urls may have new data, you mark them as updated and new data is automatically pushed to all connected clients. Magic! 🦄🦄🦄
 
+
 ## I want to see it!
 
 Live example is deployed to https://hypercards.net . Open it in two windows and see how adding/changing todos in one window adds/changes them in both. Sources are under `examples/todomvc`.
+
 
 ## How to use it?
 
@@ -99,6 +102,7 @@ You have to use immutant web server, as live server middleware assumes immutant'
 6. DONE
 
 
+## Notes
 
 First argument to `[lc/live-component]` is a vector of urls, and each result will be passed as an argument to your rendering component, so you are not limited to just one url per component. That means you can have
 
@@ -106,11 +110,15 @@ First argument to `[lc/live-component]` is a vector of urls, and each result wil
 
 Most likely you want to write a thin wrapper around `lc/live-component` to intelligently generate urls, and to use same loading and unexpected components across your project. See [examples/counter](./examples/counter) as an example with bidi routing and wrappers.
 
+
+## Commit walthrough
+
 See [examples/todomvc](./examples/todomvc) for reagent's todomvc augmented with live-components. It is done in following 3 commits:
 
-1. Adding REST API for todos: [dd994a1](https://github.com/alesguzik/live-components/commit/dd994a1bb81b5806b56501f5d3204f9fe65d5c6f). At this point you have just simple rest api for managing todos that you can call using `curl`.
-2. Adding live to the client and server, and rendering todos from server: [b9fad3b](https://github.com/alesguzik/live-components/commit/b9fad3bd14d9d512e4818729ae894383c19d5364). At this point your server todos are rendered live in a browser. Whenever you make rest api call (e.g. via curl) to modify todos, the changes are automatically propagated to all clients.
-3. Using REST API to modify todos: [72093db](https://github.com/alesguzik/live-components/commit/72093db340e47df58be9f60661e5d433f528131c). At this point we have fully-collaborative todomvc.
+1. [dd994a1](https://github.com/alesguzik/live-components/commit/dd994a1bb81b5806b56501f5d3204f9fe65d5c6f) add todo rest api. At this point you have simple rest api for managing todos that you can call using `curl`.
+2. [b9fad3b](https://github.com/alesguzik/live-components/commit/b9fad3bd14d9d512e4818729ae894383c19d5364) todo live rendering. At this point your server todos are rendered live in a browser. Whenever you make rest api call (e.g. via curl) to modify todos, the changes are automatically propagated to all clients.
+3. [72093db](https://github.com/alesguzik/live-components/commit/72093db340e47df58be9f60661e5d433f528131c) todo live modification. At this point we have fully-collaborative todomvc.
+
 
 # Thanks
 

@@ -1,6 +1,6 @@
 # Live Components 🦄🦄🦄
 
-Don't duplicate server state on the client and get realtime collaboration for free.
+Throw away manual server state management on the client and get realtime collaboration for free.
 
 
 ## What is this about?

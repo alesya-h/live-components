@@ -14,11 +14,16 @@
 (deps/request-dependencies :app)
 (println "Configuring build tasks.")
 
-(def +version+ "1.0.0")
+(def +version+ "1.0.1")
 (bl/bootlaces! +version+)
 
 (boot/task-options!
- built-in/pom {:project 'live-components :version +version+})
+ built-in/pom {:project 'live-components
+               :version +version+
+               :url "https://github.com/alesguzik/live-components"
+               :scm {:url "git@github.com:alesguzik/live-components.git"}
+               :description "Don't duplicate server state on the client and get realtime collaboration for free"
+               :license {"Apache License, Version 2.0" "https://www.apache.org/licenses/LICENSE-2.0.txt"}})
 
 (def push-release bl/push-release)
 (def push-snapshot bl/push-snapshot)

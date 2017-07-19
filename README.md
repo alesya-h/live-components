@@ -30,7 +30,7 @@ Live example is deployed to https://hypercards.net . Open it in two windows and 
 
 `"/live"` is a url under which live endpoint will become available. You'll use it on the client to connect to live (see below).
 
-You have to use immutant web server, as live server middleware assumes immutant's websocket api. Unfortunately ring doesn't have standard websocket api. See 
+You have to use immutant web server, as live server middleware assumes immutant's websocket api. Unfortunately ring doesn't have standard websocket api. See [examples/todomvc/src/app/server.clj](./examples/todomvc/src/app/server.clj) for example of starting immutant.
 
 3. Configure and enable live on the client:
 

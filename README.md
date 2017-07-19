@@ -111,7 +111,7 @@ First argument to `[lc/live-component]` is a vector of urls, and each result wil
 Most likely you want to write a thin wrapper around `lc/live-component` to intelligently generate urls, and to use same loading and unexpected components across your project. See [examples/counter](./examples/counter) as an example with bidi routing and wrappers.
 
 
-## Commit walthrough
+## Commit walkthrough
 
 See [examples/todomvc](./examples/todomvc) for reagent's todomvc augmented with live-components. It is done in following 3 commits:
 

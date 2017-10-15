@@ -14,7 +14,7 @@
 (deps/request-dependencies :app)
 (println "Configuring build tasks.")
 
-(def +version+ "1.0.1")
+(def +version+ "1.1.0")
 (bl/bootlaces! +version+)
 
 (boot/task-options!

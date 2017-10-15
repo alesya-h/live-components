@@ -30,9 +30,13 @@
   (try
     (let [request (async/originating-request client)
           _ (println "Sending update for " url)
-          result (@base-handler {:request-method :get
-                                 :uri url
-                                 :headers (:headers request)})]
+          result (try (@base-handler {:request-method :get
+                                      :uri url
+                                      :headers (:headers request)})
+                      (catch Exception e
+                        (println "ERROR: base handler crashed" (str e))
+                        {:status 500
+                         :body (str e)}))]
       (send-data client [url result]))
     (catch Exception e
       (println "ERROR: Problem sending live update: " e))))

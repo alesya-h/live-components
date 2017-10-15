@@ -5,10 +5,6 @@
             [live-components.client.components :as lc]
             [live-components.client.core :as live]))
 
-(defonce todos (r/atom (sorted-map)))
-
-(defonce counter (r/atom 0))
-
 (defn add-todo [text] (ajax/POST "/todos/new" {:format :raw :params {:title text}}))
 
 (defn toggle [id] (ajax/POST (str "/todos/" id "/toggle")))

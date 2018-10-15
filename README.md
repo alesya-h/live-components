@@ -5,7 +5,7 @@ Throw away manual server state management on the client and get realtime collabo
 
 ## What is this about?
 
-You have your backend with REST API. You have your React-based frontend. Usually you use ajax calls and keep out-of-date independent incomplete copy of your server state on the client. When you make ajax calls, you update your local copy of the state. With live-components you throw away manual handling of server state on the client. You have one component that takes a list of subscription urls, and component, which will be passed data from that urls and rendered. On the server whenever you think some urls may have new data, you mark them as updated and new data is automatically pushed to all connected clients. Magic! 🦄🦄🦄
+You have your backend with REST API. You have your React-based frontend. Usually you use ajax calls and keep out-of-date independent incomplete copy of your server state on the client. When you make ajax calls, you update your local copy of the state. With live-components you throw away manual handling of server state on the client. You have one component that takes a list of subscription urls, and a component, which will receive data from those urls and do the rendering. On the server whenever you think some urls may have new data, you mark them as updated and new data is automatically pushed to all connected clients. Magic! 🦄🦄🦄
 
 
 ## I want to see it!
@@ -122,4 +122,4 @@ See [examples/todomvc](./examples/todomvc) for reagent's todomvc augmented with 
 
 ## Credits
 
-This project have been born as part of continuous effort to build the best social file sharing platform [http://ourmedian.com](http://ourmedian.com).
+This project have been born as part of a continuous effort to build the best social file sharing platform [http://ourmedian.com](http://ourmedian.com).

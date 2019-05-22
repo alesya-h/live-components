@@ -10,7 +10,8 @@ You have your backend with REST API. You have your React-based frontend. Usually
 
 ## I want to see it!
 
-Live example is deployed to https://hypercards.net . Open it in two windows and see how adding/changing todos in one window adds/changes them in both. Sources are under `examples/todomvc`.
+Clone the repo, cd into `examples/todomvc` and run `boot dev`. After that you may open http://localhost:3000
+in two windows and see how adding/changing todos in one window adds/changes them in both.
 
 
 ## How to use it?
